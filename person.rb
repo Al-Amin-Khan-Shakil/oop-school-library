@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require './nameable'
 
 # the class of Person
@@ -19,13 +17,13 @@ class Person < Nameable
     true if of_age? || @parent_permission
   end
 
+  def correct_name
+    @name
+  end
+
   private
 
   def of_age?
     true if @age >= 18
-  end
-
-  def correct_name
-    @name
   end
 end
