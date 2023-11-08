@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './person'
 
 # Teacher class a child of Person class
