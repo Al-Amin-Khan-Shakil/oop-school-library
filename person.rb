@@ -1,4 +1,5 @@
 require './nameable'
+require './person'
 
 # the class of Person
 class Person < Nameable
@@ -20,6 +21,10 @@ class Person < Nameable
 
   def correct_name
     @name
+  end
+
+  def add_rental(date, book)
+    Rental.new(date, book, self)
   end
 
   private
