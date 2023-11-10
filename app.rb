@@ -1,3 +1,6 @@
+require './student'
+require './teacher'
+
 # App class for interface actions
 class App
   def initialize
@@ -40,5 +43,18 @@ class App
     else
       'Invalid number, try again'
     end
+  end
+
+  def create_student
+    print 'Name: '
+    name = gets
+    print 'Age: '
+    age = gets.chomp.to_i
+    print 'Has parent permission? [Y/N]: '
+    permission = gets.chomp.downcase == 'y'
+    student = Student.new(age, name, permission)
+    @persons << student
+    puts 'Person created successfully'
+    puts ' '
   end
 end
