@@ -9,6 +9,7 @@ def main
     puts
     puts '1. List all books'
     puts '2. List all persons'
+    puts '3. Create a person'
     puts
     option = gets.chomp.to_i
     case option
@@ -16,6 +17,8 @@ def main
       app.book_list
     when 2
       app.person_list
+    when 3
+      app.create_person
     else
       'Invalid option, try again'
     end
