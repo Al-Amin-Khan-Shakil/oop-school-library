@@ -6,11 +6,15 @@ def main
   puts ' '
   loop do
     puts 'Please select an option by entering a number:'
+    puts
     puts '1. List all books'
+    puts '2. List all persons'
     option = gets.chomp.to_i
     case option
     when 1
       app.book_list
+    when 2
+      app.person_list
     else
       'Invalid option, try again'
     end
