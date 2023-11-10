@@ -9,6 +9,7 @@ def main
     puts
     puts '1. List all books'
     puts '2. List all persons'
+    puts
     option = gets.chomp.to_i
     case option
     when 1
