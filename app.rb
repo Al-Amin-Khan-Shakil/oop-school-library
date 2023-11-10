@@ -14,5 +14,18 @@ class App
         puts "#{show_index ? index : ' '} Title: \"#{book.title}\", Author: \"#{book.author}\"."
       end
     end
+    puts
+  end
+
+  def person_list(show_index: false)
+    if @persons.empty?
+      puts 'Sorry, there is no one, add your friends'
+    else
+      @persons.each_with_index do |person, index|
+        puts "#{show_index ? index : ' '} [#{person.class}]" \
+             "Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
+      end
+    end
+    puts
   end
 end
