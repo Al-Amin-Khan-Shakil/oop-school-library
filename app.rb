@@ -14,7 +14,6 @@ class App
   end
 
   def book_list(show_index: false)
-    puts 'call befor'
     if @books.empty?
       puts 'Sorry, the library is empty. Please add some books.'
     else
@@ -22,11 +21,10 @@ class App
         puts "#{show_index ? index : ' '} Title: \"#{book.title}\", Author: \"#{book.author}\"."
       end
     end
-    puts 'call after'
+    puts
   end
 
   def person_list(show_index: false)
-    puts 'call before'
     if @people.empty?
       puts 'Sorry, there is no one, add your friends'
     else
@@ -34,7 +32,7 @@ class App
         puts "#{show_index ? index : ' '} [#{person.class}] Name: \"#{person.name.delete("\n")}\", ID: #{person.id}, Age: #{person.age}"
       end
     end
-    puts 'call after'
+    puts
   end
 
   def create_person
@@ -96,7 +94,7 @@ class App
     puts 'Select a person from the following list by number (not id)'
     person_list(show_index: true)
     person_index = gets.chomp.to_i
-    print 'Date: '
+    print 'Date (dd/mm/yy): '
     date = Date.parse(gets.chomp)
     rental = Rental.new(date, @books[book_index], @people[person_index])
     @rentals << rental
@@ -111,6 +109,46 @@ class App
     @rentals.each do |rental|
       puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}" if rental.person.id == id
       puts ' '
+    end
+  end
+
+  def menu_list
+    puts 'Please select an option by entering a number:'
+    puts '1. List all books'
+    puts '2. List all people'
+    puts '3. Create a person'
+    puts '4. Create a book'
+    puts '5. Create a book rental'
+    puts '6. List all rentals for a given person id '
+    puts '7. Exit'
+  end
+
+  def menu_action(option)
+    case option
+    when 1
+      book_list
+    when 2
+      person_list
+    when 3
+      create_person
+    when 4
+      create_book
+    when 5
+      create_rental
+    when 6
+      list_rentals
+    else
+      'Invalid option, try again'
+    end
+  end
+
+  def run
+    loop do
+      menu_list
+      option = gets.chomp.to_i
+      break if option == 7
+
+      menu_action(option)
     end
   end
 end
