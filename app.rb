@@ -29,7 +29,8 @@ class App
       puts 'Sorry, there is no one, add your friends'
     else
       @people.each_with_index do |person, index|
-        puts "#{show_index ? index : ' '} [#{person.class}] Name: \"#{person.name.delete("\n")}\", ID: #{person.id}, Age: #{person.age}"
+        puts "#{show_index ? index : ' '} [#{person.class}]" \
+             "Name: \"#{person.name.delete("\n")}\", ID: #{person.id}, Age: #{person.age}"
       end
     end
     puts
